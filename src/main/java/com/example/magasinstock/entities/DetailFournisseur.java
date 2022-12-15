@@ -1,5 +1,6 @@
 package com.example.magasinstock.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class DetailFournisseur implements Serializable {
     private String matricule;
 
     @OneToOne(mappedBy = "detailFournisseur")
+    @JsonIgnore  //bech njibou detail m3a lfournisseur mouch l3akes
     private Fournisseur fournisseur;
 
 }

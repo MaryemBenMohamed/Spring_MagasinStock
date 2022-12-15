@@ -23,6 +23,7 @@ public class Facture implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateCreationFacture;
     @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.TIMESTAMP) tet3ada par défaut akeka ta3tik date kemla b heure o seconde o kol  don nbedlouha bely fou9ha
     private Date dateDerniereModification;
     private boolean archivee;
 

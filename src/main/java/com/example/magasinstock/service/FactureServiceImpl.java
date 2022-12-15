@@ -43,7 +43,7 @@ public class FactureServiceImpl implements ICrudService<Facture>,IFactureService
 
     @Override
     public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-        return factureRepository.findByFournisseurIdFourni(idFournisseur);
+        return factureRepository.findByFournisseurIdFournisseur(idFournisseur);
 
     }
 
@@ -54,6 +54,13 @@ public class FactureServiceImpl implements ICrudService<Facture>,IFactureService
         //fourni.getFactures().add(f);
         fourni.getFactures().add(f);
         return factureRepository.save(f);
+
+    }
+
+    @Override
+    public void cancelFacture(Long id) {
+        Facture facture = factureRepository.findById(id).orElse(null);
+        facture.setArchivee(true);
 
     }
 }

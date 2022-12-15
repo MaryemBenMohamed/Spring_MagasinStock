@@ -9,6 +9,7 @@ import com.example.magasinstock.repository.SecteurActiviteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -41,11 +42,12 @@ public class FournisseurServiceImpl implements ICrudService<Fournisseur>,IFourni
     }
 
    @Override
+   //@Transactional
     public void assignSecteurActiviteToFournisseur(Long fournisseurId, Long secteurActiviteId) {
        Fournisseur f=fournisseurRepository.findById(fournisseurId).orElse(null);
        SecteurActivite sec = secteurActiviteRepository.findById(secteurActiviteId).orElse(null);
-       sec.getFournisseurs().add(f);
-       secteurActiviteRepository.save(sec);
+       f.getSecteurActivites().add(sec);
+       fournisseurRepository.save(f); //ou @Transactional
 
 
     }
